@@ -52,10 +52,6 @@ intervalos.map((x, index) => {
     freqAcumulada += x[2];
     let freqRelativa = freqAcumulada / total;
     let freqRelativaPercentual = freqRelativa * 100.0;
-    freqPercentualAcumulada += freqRelativaPercentual;
+    freqPercentualAcumulada = freqAcumulada / 2;
     console.log(`${x[0]} |-- ${x[1]}\t${x[2]}\t${freqAcumulada}\t${freqRelativa.toFixed(3)}\t${freqRelativaPercentual.toFixed(3)}\t${freqPercentualAcumulada}`);
 });
-
-
-
-
