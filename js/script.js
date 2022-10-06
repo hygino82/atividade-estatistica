@@ -4,6 +4,7 @@ let tamanho = document.querySelector('#tamanho');
 let btnAdiciona = document.querySelector('#btnAdiciona');
 
 let btnAdicionaElemento = document.querySelector('#btnAdicionaElemento');
+let btnMostrarLista = document.querySelector('#btnMostraLista')
 
 let listaIntervalo = [];
 let listaElementos = [];
@@ -37,8 +38,18 @@ btnAdiciona.addEventListener('click', adicionaIntervalos);
 
 function adicionarElemento() {
     let valor = Number(document.getElementById('valor').value);
-    
+
     listaElementos.push(valor);
+    //console.log(`Adicionado o valor ${valor}`);
 }
 
 btnAdicionaElemento.addEventListener('click', adicionarElemento);
+
+function listarElementos() {
+    listaElementos.map((x, index) => {
+        console.log(`x_${index} = ${x}`);
+    });
+    console.log(`A lista tem ${listaElementos.length} elementos`);
+}
+
+btnMostrarLista.addEventListener('click', listarElementos);
