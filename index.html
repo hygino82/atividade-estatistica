@@ -13,8 +13,8 @@
 
 <body>
     <div id="pesquisa" class="container">
-        <label for="tipoPesquisa">Pesquisa sobre o quê?</label>
-        <input type="text" id="titulo">
+        <label for="titulo">Pesquisa sobre o quê?</label>
+        <input type="text" id="titulo" value="Bananas">
     </div>
 
     <div id="intervalos" class="container">
@@ -27,13 +27,15 @@
         <input type="number" id="tamanho" value="5" required><br>
 
         <button class="btn btn-primary" id="btnAdiciona">Adiciona intervalos</button>
-        <button class="btn btn-warning" id="btnLimpar">Limpar dados</button><br>
+        <button class="btn btn-danger" id="btnLimpar">Limpar dados</button><br>
     </div>
 
     <div class="container" id="valores">
         <h3>Adicione os valores</h3>
         <label for="valor">Valor</label>
         <input type="number" id="valor" value="141"><br>
+        <label for="repeticao">Repetir valor</label>
+        <input type="number" id="repeticao" min="1" value="13">
         <button class="btn btn-primary" id="btnAdicionaElemento">Adiciona valor</button>
         <buton class="btn btn-success" id="btnMostraLista">Mostrar valores</buton>
     </div>
@@ -44,7 +46,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Estatura</th>
+                    <th scope="col" id="tipoPesquisa">Estatura</th>
                     <th scope="col">F</th>
                     <th scope="col">Fa</th>
                     <th scope="col">Fr</th>

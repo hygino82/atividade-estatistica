@@ -93,6 +93,10 @@ while (b <= max) {
 }
 
 function gerarTabela() {
+    let titulo = String(document.querySelector('#titulo').value);
+    let tipoPesquisa = document.querySelector('#tipoPesquisa');
+
+    tipoPesquisa.innerHTML = titulo;
     let freqAcumulada = 0;
     let freqPercentualAcumulada = 0;
     let total = minhaLista.length;
@@ -106,7 +110,7 @@ function gerarTabela() {
         corpoTabela.innerHTML +=
             `
             <tr>
-                <th scope="row">${index+1}</th>
+                <th scope="row">${index + 1}</th>
                 <td>${x[0]} &#10152; ${x[1]}</td>
                 <td>${x[2]}</td>
                 <td>${freqAcumulada}</td>
