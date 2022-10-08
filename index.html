@@ -12,13 +12,9 @@
 </head>
 
 <body>
-
-    <div class="container" id="valores">
-        <h3>Adicione os valores</h3>
-        <label for="valor">Valor</label>
-        <input type="number" id="valor" value="141"><br>
-        <button class="btn btn-primary" id="btnAdicionaElemento">Adiciona valor</button>
-        <buton class="btn btn-success" id="btnMostraLista">Mostrar valores</buton>
+    <div id="pesquisa" class="container">
+        <label for="tipoPesquisa">Pesquisa sobre o quê?</label>
+        <input type="text" id="titulo">
     </div>
 
     <div id="intervalos" class="container">
@@ -30,10 +26,54 @@
         <label for="tamanho">Tamanho</label>
         <input type="number" id="tamanho" value="5" required><br>
 
-        <button class="btn btn-primary" id="btnAdiciona">Adiciona intervalos</button><br>
-
+        <button class="btn btn-primary" id="btnAdiciona">Adiciona intervalos</button>
+        <button class="btn btn-warning" id="btnLimpar">Limpar dados</button><br>
     </div>
 
+    <div class="container" id="valores">
+        <h3>Adicione os valores</h3>
+        <label for="valor">Valor</label>
+        <input type="number" id="valor" value="141"><br>
+        <button class="btn btn-primary" id="btnAdicionaElemento">Adiciona valor</button>
+        <buton class="btn btn-success" id="btnMostraLista">Mostrar valores</buton>
+    </div>
+
+
+    <div id="saida" class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Estatura</th>
+                    <th scope="col">F</th>
+                    <th scope="col">Fa</th>
+                    <th scope="col">Fr</th>
+                    <th scope="col">Fp</th>
+                    <th scope="col">Fpa</th>
+                </tr>
+            </thead>
+            <tbody id="corpo-tabela">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>140 |-- 145</td>
+                    <td>13</td>
+                    <td>13</td>
+                    <td>0,63</td>
+                    <td>6,3</td>
+                    <td>6,5</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>140 |-- 145</td>
+                    <td>13</td>
+                    <td>13</td>
+                    <td>0,63</td>
+                    <td>6,3</td>
+                    <td>6,5</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
