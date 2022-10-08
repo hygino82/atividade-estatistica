@@ -1,96 +1,82 @@
 let inicial = document.querySelector('#inicial');
 let final = document.querySelector('#final');
 let tamanho = document.querySelector('#tamanho');
-let btnAdiciona = document.querySelector('#btnAdiciona');
 
 let btnAdicionaElemento = document.querySelector('#btnAdicionaElemento');
+//let btnIntervalo = document.querySelector('#btnIntervalo');
+let btnLimpar = document.querySelector('#btnLimpar');
 let btnMostrarLista = document.querySelector('#btnMostraLista');
+
 let corpoTabela = document.querySelector('#corpo-tabela');
+let mostrarSaida = document.querySelector('#saida');
 
-let listaIntervalo = [];
 let listaElementos = [];
-
-function adicionaIntervalos() {
-    listaIntervalo = [];
-
-    let inicio = Number(inicial.value);
-    let fim = Number(final.value);
-    let intervalo = Number(tamanho.value);
-
-    let contador = 0;
-    let a = inicio, b = 0;
-
-    listaIntervalo.push(inicio);
-    //intervalo.push(inicio);
-
-    console.log(`inicio=${inicio}  fim=${fim} intervalo=${intervalo}`);
-    while (b < fim) {
-        a = b;
-        b += intervalo;
-        listaIntervalo.push(b);
-        contador++;
-        //console.log(`a =${a}  b=${b} contador=${contador}`);
-    }
-
-    listaIntervalo.map(x => console.log(x));
-}
-
-btnAdiciona.addEventListener('click', adicionaIntervalos);
-
-function adicionarElemento() {
-    let valor = Number(document.getElementById('valor').value);
-
-    listaElementos.push(valor);
-    //console.log(`Adicionado o valor ${valor}`);
-}
-
-btnAdicionaElemento.addEventListener('click', adicionarElemento);
-
-/*function listarElementos() {
-    listaElementos.map((x, index) => {
-        console.log(`x_${index} = ${x}`);
-    });
-    console.log(`A lista tem ${listaElementos.length} elementos`);
-}
-
-btnMostrarLista.addEventListener('click', listarElementos);*/
-
-
-let minhaLista = [];
+let intervalos = [];
 
 function adicionarLista(valor, x) {
     for (let i = 0; i < x; i++) {
-        minhaLista.push(valor);
+        listaElementos.push(valor);
+    }
+    console.log(`O valor ${valor} foi repetido ${x} vezes`);
+}
+
+function adicionarElementos() {
+    let txtValor = document.querySelector('#valor');
+    let txtRepeticao = document.querySelector('#repeticao');
+    let valor = Number(txtValor.value);
+    let repeticao = Number(txtRepeticao.value);
+
+    if (valor > 0 && repeticao > 0) {
+        adicionarLista(valor, repeticao);
+        txtValor.value = '';
+        txtRepeticao.value = '';
+    }
+    else {
+        alert('Preencha todos os capos!');
     }
 }
 
-adicionarLista(141, 13);
-adicionarLista(146, 22);
-adicionarLista(151, 35);
-adicionarLista(156, 42);
-adicionarLista(161, 38);
-adicionarLista(166, 27);
-adicionarLista(171, 18);
-adicionarLista(176, 11);
+btnAdicionaElemento.addEventListener('click', adicionarElementos);
 
-let min = 140;
-let max = 190;
+function gerarIntervalos() {
+    let min = Number(inicial.value);
+    let max = Number(final.value);
 
-let intervalos = [];
+    intervalos = [];
 
-let a = 140;
-let b = 140;
-let intervalo = 5;
+    if (max > min && listaElementos.length > 0) {
+        let a = min;
+        let b = min;
+        let intervalo = Number(tamanho.value);
 
-while (b <= max) {
-    a = b;
-    b = a + intervalo;
-    //let media = (a + b) / 2;//acha a média do intervalo
-    let quantidade = minhaLista.filter(x => x >= a && x < b);//filtra os elementos que estejam no intervalo
-    if (quantidade.length !== 0) {
-        intervalos.push([a, b, quantidade.length]);
+        while (b <= max) {
+            a = b;
+            b = a + intervalo;
+            let quantidade = listaElementos.filter(x => x >= a && x < b);//filtra os elementos que estejam no intervalo
+            if (quantidade.length !== 0) {
+                intervalos.push([a, b, quantidade.length]);
+            }
+        }
+        gerarTabela();
+        return true;
+    }
+
+    alert('O valor inicial deve ser menor que o final!');
+    return false;
+}
+
+
+function gerarTabelaCompleta() {
+
+    if (gerarIntervalos()) {
+        mostrarSaida.style.display = 'block';
+    }
+    else {
+        mostrarSaida.style.display = 'none';
     }
 }
+
+btnMostrarLista.addEventListener('click', gerarTabelaCompleta);
 
 function gerarTabela() {
     let titulo = String(document.querySelector('#titulo').value);
@@ -99,7 +85,7 @@ function gerarTabela() {
     tipoPesquisa.innerHTML = titulo;
     let freqAcumulada = 0;
     let freqPercentualAcumulada = 0;
-    let total = minhaLista.length;
+    let total = listaElementos.length;
     corpoTabela.innerHTML = '';
     intervalos.map((x, index) => {
         freqAcumulada += x[2];
@@ -122,4 +108,9 @@ function gerarTabela() {
     });
 }
 
-btnMostrarLista.addEventListener('click', gerarTabela);
+function limparDados() {
+    alert('Testando a lista de saída');
+    intervalos.map((x, index) => console.log(`x_${index} = {x}`));
+}
+
+btnLimpar.addEventListener('click', limparDados);
