@@ -109,8 +109,10 @@ function gerarTabela() {
 }
 
 function limparDados() {
-    alert('Testando a lista de saída');
-    intervalos.map((x, index) => console.log(`x_${index} = {x}`));
+    alert('Limpando dados dos registros');
+    intervalos = [];
+    listaElementos = [];
+    mostrarSaida.style.display = 'none';
 }
 
 btnLimpar.addEventListener('click', limparDados);
