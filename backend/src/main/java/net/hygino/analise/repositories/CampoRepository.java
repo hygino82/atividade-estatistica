@@ -13,6 +13,7 @@ import java.util.Optional;
 public interface CampoRepository extends JpaRepository<Campo, Long> {
     @Query("SELECT obj FROM Campo obj")
     List<Campo> buscarTodos();
+    
     @Query("SELECT obj FROM Campo obj WHERE obj.id = :id")
     Optional<Campo> buscarPorId(Long id);
 }
