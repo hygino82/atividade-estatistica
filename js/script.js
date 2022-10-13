@@ -9,6 +9,9 @@ let btnMostrarLista = document.querySelector('#btnMostraLista');
 
 let corpoTabela = document.querySelector('#corpo-tabela');
 let mostrarSaida = document.querySelector('#saida');
+let contagem = document.querySelector('#contagem');
+
+let contador = 0;
 
 let listaElementos = [];
 let intervalos = [];
@@ -18,6 +21,9 @@ function adicionarLista(valor, x) {
         listaElementos.push(valor);
     }
     console.log(`O valor ${valor} foi repetido ${x} vezes`);
+    contador += x;
+
+    contagem.innerHTML = `Total adicionado ${contador}`
 }
 
 function adicionarElementos() {
@@ -113,6 +119,7 @@ function limparDados() {
     intervalos = [];
     listaElementos = [];
     mostrarSaida.style.display = 'none';
+    contador = 0;
 }
 
 btnLimpar.addEventListener('click', limparDados);
